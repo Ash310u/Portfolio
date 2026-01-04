@@ -1,3 +1,70 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-bg-1",
+      "description": "Abstract network of light streaks on a dark background.",
+      "imageUrl": "https://images.unsplash.com/photo-1738082956254-1dd63ad1db71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMG5ldHdvcmt8ZW58MHx8fHwxNzY3NDkwNDAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract network"
+    },
+    {
+      "id": "hero-bg-2",
+      "description": "Geometric patterns with glowing lines, representing data flow.",
+      "imageUrl": "https://images.unsplash.com/photo-1685034759882-34583cece8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkYXRhJTIwZmxvd3xlbnwwfHx8fDE3Njc0NTgxMTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data flow"
+    },
+    {
+      "id": "hero-bg-3",
+      "description": "Dark server room with subtle light effects.",
+      "imageUrl": "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzZXJ2ZXIlMjByb29tfGVufDB8fHx8MTc2NzQ1NTU0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "server room"
+    },
+    {
+      "id": "hero-bg-4",
+      "description": "Neural network visualization with glowing nodes.",
+      "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuZXVyYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2NzQ1NDkwOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "neural network"
+    },
+    {
+      "id": "about-visual",
+      "description": "Abstract visual for the about section.",
+      "imageUrl": "https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMHRlY2hub2xvZ3l8ZW58MHx8fHwxNzY3NDM2NTMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract technology"
+    },
+    {
+      "id": "expertise-1",
+      "description": "Backend Architecture & APIs thumbnail",
+      "imageUrl": "https://images.unsplash.com/photo-1698668975271-2ba9a323be6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzZXJ2ZXIlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzY3NTIyNTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "server architecture"
+    },
+    {
+      "id": "expertise-2",
+      "description": "Distributed & Real-Time Systems thumbnail",
+      "imageUrl": "https://images.unsplash.com/photo-1664526937033-fe2c11f1be25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkaXN0cmlidXRlZCUyMG5ldHdvcmt8ZW58MHx8fHwxNzY3NTIyNTM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "distributed network"
+    },
+    {
+      "id": "expertise-3",
+      "description": "AI & LLM-Powered Applications thumbnail",
+      "imageUrl": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc2NzUyMjUzN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "artificial intelligence"
+    },
+    {
+      "id": "expertise-4",
+      "description": "System Scalability & Performance thumbnail",
+      "imageUrl": "https://images.unsplash.com/photo-1759828941134-c840a33f3584?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJmb3JtYW5jZSUyMGRhc2hib2FyZHxlbnwwfHx8fDE3Njc0NTIwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "performance dashboard"
+    },
+    {
+      "id": "expertise-5",
+      "description": "Product Engineering thumbnail",
+      "imageUrl": "https://images.unsplash.com/photo-1764737740462-2a310c7b2c39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9kdWN0JTIwYmx1ZXByaW50fGVufDB8fHx8MTc2NzUyMjUzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "product blueprint"
+    },
+    {
+      "id": "expertise-6",
+      "description": "Database Management thumbnail",
+      "imageUrl": "https://images.unsplash.com/photo-1669023414162-5bb06bbff0ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkYXRhYmFzZSUyMHNjaGVtYXxlbnwwfHx8fDE3Njc1MjI1Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "database schema"
+    }
+  ]
 }
