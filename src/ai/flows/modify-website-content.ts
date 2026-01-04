@@ -48,11 +48,11 @@ let modifyWebsiteContentFlow: ((input: ModifyWebsiteContentInput) => Promise<Mod
 function getModifyWebsiteContentFlow() {
   if (!modifyWebsiteContentFlow) {
     const ai = getAI();
-    const modifyWebsiteContentPrompt = ai.definePrompt({
-      name: 'modifyWebsiteContentPrompt',
-      input: {schema: ModifyWebsiteContentInputSchema},
-      output: {schema: ModifyWebsiteContentOutputSchema},
-      prompt: `You are an AI assistant specializing in refining website content.
+const modifyWebsiteContentPrompt = ai.definePrompt({
+  name: 'modifyWebsiteContentPrompt',
+  input: {schema: ModifyWebsiteContentInputSchema},
+  output: {schema: ModifyWebsiteContentOutputSchema},
+  prompt: `You are an AI assistant specializing in refining website content.
 
   The user wants to modify the following type of content: {{{contentType}}}
   The existing content is: {{{existingContent}}}
@@ -63,19 +63,19 @@ function getModifyWebsiteContentFlow() {
   The tone should be cinematic, minimal, and premium.
   Return only the modified content.
   `,
-    });
+});
 
     modifyWebsiteContentFlow = ai.defineFlow(
-      {
-        name: 'modifyWebsiteContentFlow',
-        inputSchema: ModifyWebsiteContentInputSchema,
-        outputSchema: ModifyWebsiteContentOutputSchema,
-      },
-      async input => {
-        const {output} = await modifyWebsiteContentPrompt(input);
-        return output!;
-      }
-    );
+  {
+    name: 'modifyWebsiteContentFlow',
+    inputSchema: ModifyWebsiteContentInputSchema,
+    outputSchema: ModifyWebsiteContentOutputSchema,
+  },
+  async input => {
+    const {output} = await modifyWebsiteContentPrompt(input);
+    return output!;
+  }
+);
   }
   return modifyWebsiteContentFlow;
 }

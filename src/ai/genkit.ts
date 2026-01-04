@@ -9,9 +9,9 @@ let ai: ReturnType<typeof genkit> | null = null;
 try {
   if (process.env.GOOGLE_GENAI_API_KEY) {
     ai = genkit({
-      plugins: [googleAI()],
-      model: 'googleai/gemini-2.5-flash',
-    });
+  plugins: [googleAI()],
+  model: 'googleai/gemini-2.5-flash',
+});
   }
 } catch (error) {
   // Silently fail if genkit can't be initialized
