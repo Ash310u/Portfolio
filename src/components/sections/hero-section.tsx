@@ -6,32 +6,17 @@ import { useTheme } from "@/contexts/theme-context";
 
 export default function HeroSection() {
   const { themeData } = useTheme();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const parallaxStyle = {
-    transform: `translate3d(0, ${scrollY * 0.3}px, 0) scale(${1 + scrollY * 0.0001})`,
-    filter: `blur(${Math.min(scrollY / 100, 4)}px)`,
-  };
 
   return (
     <section className="relative h-[110vh] min-h-[700px] w-full overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src={themeData.heroBackground.imageUrl}
+          src="https://cpigzkkxvmdkxmvoifqj.supabase.co/storage/v1/object/public/assets/ezgif.com-video-to-webp-converter%20(1).webp"
           alt={themeData.heroBackground.description}
           fill
           priority
-          className="object-cover transition-transform duration-300 ease-out"
-          style={parallaxStyle}
+          unoptimized
+          className="object-cover"
           data-ai-hint={themeData.heroBackground.imageHint}
         />
         <div className="absolute inset-0 bg-black/60"></div>
