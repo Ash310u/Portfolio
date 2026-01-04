@@ -38,11 +38,11 @@ export default function AboutSection() {
         <div className="md:col-span-2 space-y-4">
           <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-2xl group">
              <Image
-                src={themeData.aboutVisual}
-                alt="Abstract visual representing engineering skills"
+                src="https://cpigzkkxvmdkxmvoifqj.supabase.co/storage/v1/object/public/assets/WhatsApp%20Image%202026-01-04%20at%2016.08.18.jpeg"
+                alt="Portrait of Ashutosh Saha"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                data-ai-hint="abstract technology"
+                data-ai-hint="portrait man"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
@@ -53,7 +53,7 @@ export default function AboutSection() {
             disabled={isLoading}
           >
             {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-            Generate New Visual with AI
+            Generate Abstract Visual with AI
           </Button>
         </div>
         <div className="md:col-span-3">

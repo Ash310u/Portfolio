@@ -13,12 +13,12 @@ export default function CtaSection() {
         </h2>
         <div className="mt-8 flex justify-center gap-4">
           <Button size="lg" variant="outline" asChild>
-            <Link href="#">
+            <Link href="https://github.com/Ash310u" target="_blank" rel="noopener noreferrer">
               View Work
             </Link>
           </Button>
           <Button size="lg" asChild>
-            <Link href="mailto:contact@ashutoshsaha.com">
+            <Link href="mailto:ash310u@protonmain.com">
               Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { defaultSiteData } from "@/lib/site-data";
-import { Youtube, Instagram, X } from "lucide-react";
+import { Youtube, Instagram, X, Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -11,6 +11,7 @@ const iconMap = {
   Youtube: Youtube,
   Instagram: Instagram,
   X: X,
+  Linkedin: Linkedin,
 };
 
 export default function Footer() {
@@ -53,6 +54,8 @@ export default function Footer() {
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "text-muted-foreground hover:text-foreground"
                   )}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {Icon && <Icon className="h-5 w-5" />}
                 </Link>

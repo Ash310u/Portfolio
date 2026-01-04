@@ -79,8 +79,9 @@ I am actively exploring the frontier of AI & LLM-powered applications, utilizing
     ],
     socials: [
       { title: "YouTube", href: "#", icon: "Youtube" },
-      { title: "Instagram", href: "#", icon: "Instagram" },
-      { title: "X", href: "#", icon: "X" },
+      { title: "Instagram", href: "https://www.instagram.com/a_linterieur_ashu/?hl=en", icon: "Instagram" },
+      { title: "X", href: "https://x.com/DevDotAshu", icon: "X" },
+      { title: "LinkedIn", href: "https://www.linkedin.com/in/ashutoshsaha/", icon: "Linkedin" },
     ],
     copyright: `© %YEAR% Ashutosh Saha. All Rights Reserved.`
   }
