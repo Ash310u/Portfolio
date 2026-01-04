@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { defaultSiteData } from "@/lib/site-data";
 import { Youtube, Instagram, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 const iconMap = {
   Youtube: Youtube,
@@ -12,6 +15,11 @@ const iconMap = {
 
 export default function Footer() {
   const data = defaultSiteData.footer;
+  const [copyright, setCopyright] = useState(data.copyright);
+
+  useEffect(() => {
+    setCopyright(data.copyright.replace('%YEAR%', new Date().getFullYear().toString()));
+  }, [data.copyright]);
 
   return (
     <footer className="bg-background border-t border-border/50 mt-16">
@@ -53,7 +61,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center text-xs text-muted-foreground">
-          <p>{data.copyright}</p>
+          <p>{copyright}</p>
         </div>
       </div>
     </footer>

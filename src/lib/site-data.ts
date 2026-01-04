@@ -82,6 +82,6 @@ I am actively exploring the frontier of AI & LLM-powered applications, utilizing
       { title: "Instagram", href: "#", icon: "Instagram" },
       { title: "X", href: "#", icon: "X" },
     ],
-    copyright: `© ${new Date().getFullYear()} Ashutosh Saha. All Rights Reserved.`
+    copyright: `© %YEAR% Ashutosh Saha. All Rights Reserved.`
   }
 };
