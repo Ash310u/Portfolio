@@ -16,9 +16,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Settings, Loader2 } from "lucide-react";
-import { modifyWebsiteContent } from "@/ai/flows/modify-website-content";
-import { useToast } from "@/hooks/use-toast";
+import { Settings } from "lucide-react";
 import Image from "next/image";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
@@ -32,36 +30,6 @@ const accentColors = [
 export default function ThemeCustomizer() {
   const { themeData, setThemeValue, availableBackgrounds } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [loadingStates, setLoadingStates] = useState({
-    tagline: false,
-    aboutShort: false,
-    aboutFull: false,
-  });
-  const { toast } = useToast();
-
-  const handleGenerate = async (
-    contentType: "tagline" | "aboutShort" | "aboutFull",
-    existingContent: string
-  ) => {
-    setLoadingStates((prev) => ({ ...prev, [contentType]: true }));
-    try {
-      const result = await modifyWebsiteContent({
-        contentType,
-        existingContent,
-      });
-      setThemeValue(contentType, result.modifiedContent);
-      toast({ title: "Content updated successfully!" });
-    } catch (error) {
-      console.error("AI content generation failed", error);
-      toast({
-        title: "Error",
-        description: "Failed to generate new content. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setLoadingStates((prev) => ({ ...prev, [contentType]: false }));
-    }
-  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -69,12 +37,12 @@ export default function ThemeCustomizer() {
         <Button
           variant="outline"
           size="icon"
-          className="fixed bottom-4 right-4 z-50 rounded-full h-12 w-12 shadow-lg bg-card/80 backdrop-blur-sm"
+          className="fixed bottom-4 right-4 z-50 rounded-full h-10 w-10 sm:h-12 sm:w-12 shadow-lg bg-card/80 backdrop-blur-sm"
         >
-          <Settings className="h-6 w-6" />
+          <Settings className="h-5 w-5 sm:h-6 sm:w-6" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-full sm:max-w-md">
+      <SheetContent className="w-full sm:max-w-md overflow-y-auto">
         <SheetHeader>
           <SheetTitle>Customize Your Site</SheetTitle>
           <SheetDescription>
@@ -106,17 +74,6 @@ export default function ThemeCustomizer() {
                 value={themeData.tagline}
                 onChange={(e) => setThemeValue("tagline", e.target.value)}
               />
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => handleGenerate("tagline", themeData.tagline)}
-                disabled={loadingStates.tagline}
-              >
-                {loadingStates.tagline ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : null}
-                Generate with AI
-              </Button>
             </div>
             <div className="space-y-2">
               <Label htmlFor="aboutShort">Short Intro Description</Label>
@@ -125,24 +82,13 @@ export default function ThemeCustomizer() {
                 value={themeData.aboutShort}
                 onChange={(e) => setThemeValue("aboutShort", e.target.value)}
               />
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => handleGenerate("aboutShort", themeData.aboutShort)}
-                disabled={loadingStates.aboutShort}
-              >
-                {loadingStates.aboutShort ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : null}
-                Generate with AI
-              </Button>
             </div>
              <div className="space-y-2">
               <Label>Accent Color</Label>
               <RadioGroup
                 value={themeData.accentColor}
                 onValueChange={(value) => setThemeValue("accentColor", value)}
-                className="flex flex-wrap gap-2"
+                className="flex flex-wrap gap-2 sm:gap-3"
               >
                 {accentColors.map((color) => (
                   <Label
@@ -168,7 +114,7 @@ export default function ThemeCustomizer() {
                         const bg = availableBackgrounds.find(b => b.id === id);
                         if (bg) setThemeValue("heroBackground", bg);
                     }}
-                    className="grid grid-cols-2 gap-2"
+                    className="grid grid-cols-2 sm:grid-cols-3 gap-2"
                 >
                     {availableBackgrounds.map((bg) => (
                          <Label
@@ -181,7 +127,7 @@ export default function ThemeCustomizer() {
                                 alt={bg.description}
                                 width={200}
                                 height={112}
-                                className="rounded-md aspect-video object-cover"
+                                className="rounded-md aspect-video object-cover w-full"
                             />
                              <RadioGroupItem value={bg.id} id={bg.id} className="sr-only" />
                         </Label>

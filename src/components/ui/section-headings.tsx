@@ -25,7 +25,7 @@ export const SectionSubheading = React.forwardRef<
   <p
     ref={ref}
     className={cn(
-      "mb-2 text-base font-semibold leading-7 text-primary font-headline",
+      "mb-2 text-sm sm:text-base font-semibold leading-6 sm:leading-7 text-primary font-headline",
       className
     )}
     {...props}

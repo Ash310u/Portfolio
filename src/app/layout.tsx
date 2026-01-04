@@ -1,10 +1,9 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/contexts/theme-context';
 import { Toaster } from '@/components/ui/toaster';
-import ThemeCustomizer from '@/components/theme-customizer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,6 +13,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Ashutosh Saha | Software Engineer',
   description: 'Building Scalable Systems & AI-Powered Products.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -31,7 +36,6 @@ export default function RootLayout({
       >
         <ThemeProvider>
           {children}
-          <ThemeCustomizer />
           <Toaster />
         </ThemeProvider>
       </body>

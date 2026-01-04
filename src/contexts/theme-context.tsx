@@ -29,7 +29,7 @@ const defaultThemeData: ThemeData = {
   aboutShort: defaultSiteData.aboutShort,
   aboutFull: defaultSiteData.aboutFull,
   heroSkills: defaultSiteData.heroSkills,
-  aboutVisual: PlaceHolderImages.find(img => img.id === 'about-visual')?.imageUrl || '',
+  aboutVisual: '',
   heroBackground: PlaceHolderImages.find(img => img.id === 'hero-bg-1') || PlaceHolderImages[0],
   accentColor: "16 100% 50%", // Default Orange HSL
 };

@@ -35,14 +35,14 @@ export default function Loader({ onLoaded }: LoaderProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
-      <div className="w-full max-w-sm flex flex-col items-center gap-4 transition-opacity duration-500" style={{ opacity: progress < 100 ? 1 : 0 }}>
-        <h1 className="text-5xl font-headline font-bold text-primary">
+    <div className="fixed inset-0 bg-background z-50 flex items-center justify-center px-4">
+      <div className="w-full max-w-xs sm:max-w-sm flex flex-col items-center gap-3 sm:gap-4 transition-opacity duration-500" style={{ opacity: progress < 100 ? 1 : 0 }}>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold text-primary">
           {getInitials(themeData.name)}
         </h1>
-        <div className="w-full flex items-center gap-4">
-          <Progress value={progress} className="h-2" />
-          <span className="text-sm font-mono text-muted-foreground w-12 text-right">
+        <div className="w-full flex items-center gap-3 sm:gap-4">
+          <Progress value={progress} className="h-1.5 sm:h-2 flex-1" />
+          <span className="text-xs sm:text-sm font-mono text-muted-foreground w-10 sm:w-12 text-right">
             {Math.round(progress)}%
           </span>
         </div>

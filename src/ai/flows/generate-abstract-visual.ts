@@ -8,7 +8,7 @@
  * - GenerateAbstractVisualOutput - The return type for the generateAbstractVisual function.
  */
 
-import {ai} from '@/ai/genkit';
+import {getAI} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateAbstractVisualInputSchema = z.object({
@@ -25,17 +25,17 @@ const GenerateAbstractVisualOutputSchema = z.object({
 });
 export type GenerateAbstractVisualOutput = z.infer<typeof GenerateAbstractVisualOutputSchema>;
 
-export async function generateAbstractVisual(
-  input: GenerateAbstractVisualInput
-): Promise<GenerateAbstractVisualOutput> {
-  return generateAbstractVisualFlow(input);
-}
+// Lazy initialization - only create flows when function is called
+let generateAbstractVisualFlow: ((input: GenerateAbstractVisualInput) => Promise<GenerateAbstractVisualOutput>) | null = null;
 
-const prompt = ai.definePrompt({
-  name: 'generateAbstractVisualPrompt',
-  input: {schema: GenerateAbstractVisualInputSchema},
-  output: {schema: GenerateAbstractVisualOutputSchema},
-  prompt: `You are an AI that generates abstract visuals that represent a professional profile.
+function getGenerateAbstractVisualFlow() {
+  if (!generateAbstractVisualFlow) {
+    const ai = getAI();
+    const prompt = ai.definePrompt({
+      name: 'generateAbstractVisualPrompt',
+      input: {schema: GenerateAbstractVisualInputSchema},
+      output: {schema: GenerateAbstractVisualOutputSchema},
+      prompt: `You are an AI that generates abstract visuals that represent a professional profile.
 
   Based on the following description, create an abstract visual:
   {{description}}
@@ -53,24 +53,34 @@ const prompt = ai.definePrompt({
   Do not show any text in the image.
   Do not show any faces or people in the image.
   `, // Prompt end
-});
-
-const generateAbstractVisualFlow = ai.defineFlow(
-  {
-    name: 'generateAbstractVisualFlow',
-    inputSchema: GenerateAbstractVisualInputSchema,
-    outputSchema: GenerateAbstractVisualOutputSchema,
-  },
-  async input => {
-    const {media} = await ai.generate({
-      model: 'googleai/imagen-4.0-fast-generate-001',
-      prompt: prompt(input).prompt,
     });
 
-    if (!media || !media.url) {
-      throw new Error('Failed to generate abstract visual.');
-    }
+    generateAbstractVisualFlow = ai.defineFlow(
+      {
+        name: 'generateAbstractVisualFlow',
+        inputSchema: GenerateAbstractVisualInputSchema,
+        outputSchema: GenerateAbstractVisualOutputSchema,
+      },
+      async input => {
+        const {media} = await ai.generate({
+          model: 'googleai/imagen-4.0-fast-generate-001',
+          prompt: prompt(input).prompt,
+        });
 
-    return {visualDataUri: media.url};
+        if (!media || !media.url) {
+          throw new Error('Failed to generate abstract visual.');
+        }
+
+        return {visualDataUri: media.url};
+      }
+    );
   }
-);
+  return generateAbstractVisualFlow;
+}
+
+export async function generateAbstractVisual(
+  input: GenerateAbstractVisualInput
+): Promise<GenerateAbstractVisualOutput> {
+  const flow = getGenerateAbstractVisualFlow();
+  return flow(input);
+}

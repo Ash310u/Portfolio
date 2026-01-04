@@ -10,7 +10,7 @@
  * - ModifyWebsiteContentOutput - The return type for the modifyWebsiteContent function.
  */
 
-import {ai} from '@/ai/genkit';
+import {getAI} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const ModifyWebsiteContentInputSchema = z.object({
@@ -42,17 +42,17 @@ export type ModifyWebsiteContentOutput = z.infer<
   typeof ModifyWebsiteContentOutputSchema
 >;
 
-export async function modifyWebsiteContent(
-  input: ModifyWebsiteContentInput
-): Promise<ModifyWebsiteContentOutput> {
-  return modifyWebsiteContentFlow(input);
-}
+// Lazy initialization - only create flows when function is called
+let modifyWebsiteContentFlow: ((input: ModifyWebsiteContentInput) => Promise<ModifyWebsiteContentOutput>) | null = null;
 
-const modifyWebsiteContentPrompt = ai.definePrompt({
-  name: 'modifyWebsiteContentPrompt',
-  input: {schema: ModifyWebsiteContentInputSchema},
-  output: {schema: ModifyWebsiteContentOutputSchema},
-  prompt: `You are an AI assistant specializing in refining website content.
+function getModifyWebsiteContentFlow() {
+  if (!modifyWebsiteContentFlow) {
+    const ai = getAI();
+    const modifyWebsiteContentPrompt = ai.definePrompt({
+      name: 'modifyWebsiteContentPrompt',
+      input: {schema: ModifyWebsiteContentInputSchema},
+      output: {schema: ModifyWebsiteContentOutputSchema},
+      prompt: `You are an AI assistant specializing in refining website content.
 
   The user wants to modify the following type of content: {{{contentType}}}
   The existing content is: {{{existingContent}}}
@@ -63,16 +63,26 @@ const modifyWebsiteContentPrompt = ai.definePrompt({
   The tone should be cinematic, minimal, and premium.
   Return only the modified content.
   `,
-});
+    });
 
-const modifyWebsiteContentFlow = ai.defineFlow(
-  {
-    name: 'modifyWebsiteContentFlow',
-    inputSchema: ModifyWebsiteContentInputSchema,
-    outputSchema: ModifyWebsiteContentOutputSchema,
-  },
-  async input => {
-    const {output} = await modifyWebsiteContentPrompt(input);
-    return output!;
+    modifyWebsiteContentFlow = ai.defineFlow(
+      {
+        name: 'modifyWebsiteContentFlow',
+        inputSchema: ModifyWebsiteContentInputSchema,
+        outputSchema: ModifyWebsiteContentOutputSchema,
+      },
+      async input => {
+        const {output} = await modifyWebsiteContentPrompt(input);
+        return output!;
+      }
+    );
   }
-);
+  return modifyWebsiteContentFlow;
+}
+
+export async function modifyWebsiteContent(
+  input: ModifyWebsiteContentInput
+): Promise<ModifyWebsiteContentOutput> {
+  const flow = getModifyWebsiteContentFlow();
+  return flow(input);
+}
