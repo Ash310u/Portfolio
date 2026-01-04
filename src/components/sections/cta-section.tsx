@@ -18,7 +18,7 @@ export default function CtaSection() {
             </Link>
           </Button>
           <Button size="lg" asChild>
-            <Link href="mailto:ash310u@protonmain.com">
+            <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=ash310u@protonmain.com" target="_blank" rel="noopener noreferrer">
               Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
